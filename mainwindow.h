@@ -22,6 +22,8 @@ class MainWindow : public QMainWindow
 
     QStackedWidget *set_of_views;
     QToolBar *toolbar;
+    QAction *projects_action;
+    QAction *logout_action;
     LoginView *login_view;
     ProjectsListView *projects_view;
     ProjectView *project_view;
@@ -41,6 +43,7 @@ public slots:
     void showProjectsView(QJsonArray proj_list);
     void prepareProjectView(const QString& id);
     void showProjectView(QJsonObject obj);
+    void showLoginView();
 
 };
 #endif // MAINWINDOW_H

@@ -1,5 +1,5 @@
 #include "projectsListView.h"
-#include "mainWindow.h"
+#include "mainwindow.h"
 
 ProjectsListView::ProjectsListView(MainWindow *main_window, NetworkManage *net_manage)
     : QWidget(main_window),

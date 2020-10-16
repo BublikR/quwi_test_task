@@ -1,5 +1,5 @@
-#include "mainWindow.h"
-#include "ui_mainWindow.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -41,8 +41,15 @@ void MainWindow::toolBarInit()
     QWidget *spacer = new QWidget();
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     toolbar->addWidget(spacer);
-    toolbar->addAction("PROJECTS");
-    toolbar->addAction("LOGOUT");
+
+    projects_action = new QAction("PROJECTS", toolbar);
+    logout_action = new QAction("LOGOUT", toolbar);
+
+    toolbar->addAction(projects_action);
+    toolbar->addAction(logout_action);
+
+    connect(projects_action, &QAction::triggered, this, &MainWindow::prepareProjectsView);
+    connect(logout_action, &QAction::triggered, this, &MainWindow::showLoginView);
 }
 
 void MainWindow::prepareProjectsView()
@@ -67,4 +74,9 @@ void MainWindow::showProjectView(QJsonObject obj)
     toolbar->setVisible(true);
     project_view->view(obj);
     set_of_views->setCurrentWidget(project_view);
+}
+
+void MainWindow::showLoginView()
+{
+    set_of_views->setCurrentWidget(login_view);
 }

@@ -1,5 +1,5 @@
 #include "projectView.h"
-#include "mainWindow.h"
+#include "mainwindow.h"
 
 ProjectView::ProjectView(MainWindow *main_window, NetworkManage *net_manage)
     : QWidget(main_window),

@@ -14,6 +14,7 @@ SOURCES += \
     httpRequest.cpp \
     loginRequest.cpp \
     loginView.cpp \
+    logoutRequest.cpp \
     main.cpp \
     mainwindow.cpp \
     networkManage.cpp \
@@ -28,6 +29,7 @@ HEADERS += \
     httpRequest.h \
     loginRequest.h \
     loginView.h \
+    logoutRequest.h \
     mainwindow.h \
     networkManage.h \
     projectDataRequest.h \

@@ -43,7 +43,7 @@ public slots:
     void showProjectsView(QJsonArray proj_list);
     void prepareProjectView(const QString& id);
     void showProjectView(QJsonObject obj);
-    void showLoginView();
+    void logOut();
 
 };
 #endif // MAINWINDOW_H

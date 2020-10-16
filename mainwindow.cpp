@@ -49,7 +49,7 @@ void MainWindow::toolBarInit()
     toolbar->addAction(logout_action);
 
     connect(projects_action, &QAction::triggered, this, &MainWindow::prepareProjectsView);
-    connect(logout_action, &QAction::triggered, this, &MainWindow::showLoginView);
+    connect(logout_action, &QAction::triggered, this, &MainWindow::logOut);
 }
 
 void MainWindow::prepareProjectsView()
@@ -76,7 +76,9 @@ void MainWindow::showProjectView(QJsonObject obj)
     set_of_views->setCurrentWidget(project_view);
 }
 
-void MainWindow::showLoginView()
+void MainWindow::logOut()
 {
+    toolbar->setVisible(false);
     set_of_views->setCurrentWidget(login_view);
+    net_manage->exitLogin();
 }

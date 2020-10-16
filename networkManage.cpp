@@ -14,6 +14,11 @@ void NetworkManage::enterLogin(const QString& login, const QString& pass)
     connect(request, &LoginRequest::tokenReceived, request, &LoginRequest::deleteLater);
 }
 
+void NetworkManage::exitLogin()
+{
+    auto request = new LogoutRequest(net_acc_manager);
+}
+
 void NetworkManage::getProjectsList()
 {
     ProjectsListRequest *request = new ProjectsListRequest(net_acc_manager, token);

@@ -11,6 +11,7 @@
 #include <QLabel>
 
 #include "loginRequest.h"
+#include "logoutRequest.h"
 #include "projectsListRequest.h"
 #include "projectDataRequest.h"
 #include "downloadImageRequest.h"
@@ -30,6 +31,7 @@ public:
     void getProjectData(const QString& id);
     void downloadImage(QLabel *label, const QString& url, const QSize& size);
     void setProjectName(const QString& id, const QJsonObject& obj);
+    void exitLogin();
 
 signals:
     void signIn();

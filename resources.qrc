@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/check_act.png</file>
+    </qresource>
+</RCC>

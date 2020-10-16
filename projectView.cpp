@@ -47,12 +47,13 @@ ProjectView::ProjectView(MainWindow *main_window, NetworkManage *net_manage)
 
 void ProjectView::view(QJsonObject& obj)
 {
-    name_edit->setText(obj["name"].toString());
-    active_chbox->setChecked(obj["is_active"].toInt() == 1);
-    add_me_as_watcher_chbox->setChecked(obj["is_owner_watcher"].toInt() == 1);
+    QJsonObject proj = obj["project"].toObject();
+    name_edit->setText(proj["name"].toString());
+    active_chbox->setChecked(proj["is_active"].toInt() == 1);
+    add_me_as_watcher_chbox->setChecked(proj["is_owner_watcher"].toInt() == 1);
     QPixmap pixmap;
     main_image_label->setPixmap(pixmap);
-    net_manage->downloadImage(main_image_label, obj["logo_url"].toString(), {80, 80});
+    net_manage->downloadImage(main_image_label, proj["logo_url"].toString(), {80, 80});
 }
 
 void ProjectView::okButtonClicked()

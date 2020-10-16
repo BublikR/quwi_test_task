@@ -17,7 +17,13 @@ ProjectsListView::ProjectsListView(MainWindow *main_window, NetworkManage *net_m
 void ProjectsListView::addProjectToList(QJsonObject obj)
 {
     QListWidgetItem *project_item = new QListWidgetItem(list_of_projects);
+    project_item->setSizeHint(QSize(30, 100));
+    project_item->setData(Qt::UserRole+1, obj["id"].toInt());
+
+    list_of_projects->addItem(project_item);
+
     QWidget *project = new QWidget();
+    list_of_projects->setItemWidget(project_item, project);
 
     QHBoxLayout *project_box = new QHBoxLayout(project);
     QLabel *project_image_label = new QLabel(project);
@@ -45,11 +51,7 @@ void ProjectsListView::addProjectToList(QJsonObject obj)
     project_box->addWidget(project_active_label);
     project_box->addLayout(time_form);
 
-    project_item->setSizeHint(QSize(30, 100));
-    project_item->setData(Qt::UserRole+1, obj["id"].toInt());
 
-    list_of_projects->addItem(project_item);
-    list_of_projects->setItemWidget(project_item, project);
 }
 
 void ProjectsListView::view(QJsonArray& proj_list)

@@ -12,9 +12,11 @@ public:
 
 private:
     void dataReceived(QJsonObject& obj) override;
+    void errorReceived(QString error) override;
 
 signals:
     void tokenReceived(QString token);
+    void errorSignal(QString error);
 };
 
 #endif // LOGINREQUEST_H

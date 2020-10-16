@@ -13,3 +13,8 @@ void LoginRequest::dataReceived(QJsonObject& obj)
     QString token = obj["token"].toString();
     emit tokenReceived(token);
 }
+
+void LoginRequest::errorReceived(QString error)
+{
+    emit errorSignal(error);
+}

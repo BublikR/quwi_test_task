@@ -22,12 +22,14 @@ class LoginView : public QWidget
     QLineEdit *login_line_edit;
     QLineEdit *pass_line_edit;
     QPushButton *login_button;
+    QLabel *error_label;
 
 public:
     explicit LoginView(MainWindow *main_window, NetworkManage *net_manage);
 
 private slots:
     void loginClicked();
+    void loginError(QString error);
 };
 
 #endif // LOGINVIEW_H

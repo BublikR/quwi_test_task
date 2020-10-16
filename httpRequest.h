@@ -20,6 +20,7 @@ protected:
     QNetworkReply* reply;
 
     virtual void dataReceived(QJsonObject& obj) {}
+    virtual void errorReceived(QString error) {}
     void setReply(QNetworkReply* reply);
     void setReplyForImage(QNetworkReply *reply);
 

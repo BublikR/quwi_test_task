@@ -20,10 +20,20 @@ void HttpRequest::setReplyForImage(QNetworkReply *reply)
 
 void HttpRequest::requestFinished()
 {
+    if(reply->error())
+    {
+        errorReceived(reply->errorString());
+        return;
+    }
     QString ans = reply->readAll();
     qDebug() << ans;
     QJsonDocument doc = QJsonDocument::fromJson(ans.toUtf8());
     QJsonObject obj = doc.object();
+    if(obj.contains("first_errors"))
+    {
+        errorReceived(obj["first_errors"].toObject().begin().value().toString());
+        return;
+    }
     emit dataReceived(obj);
 }
 

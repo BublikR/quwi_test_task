@@ -35,10 +35,9 @@ public:
 
 signals:
     void signIn();
-    void signOut();
     void projectsListReceived(QJsonArray proj_list);
     void projectDataReceived(QJsonObject obj);
-    void authorizedChanged(bool authorized);
+    void loginErrorReceived(QString error);
 
 private slots:
     void  tokenReceived(const QString& token);

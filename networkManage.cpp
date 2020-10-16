@@ -4,7 +4,6 @@ NetworkManage::NetworkManage(QObject *parent)
     : QObject(parent),
       token(QString("")),
       net_acc_manager(new QNetworkAccessManager(this))
-//      authorized(false)
 {}
 
 void NetworkManage::enterLogin(const QString& login, const QString& pass)
@@ -12,6 +11,7 @@ void NetworkManage::enterLogin(const QString& login, const QString& pass)
     LoginRequest *request = new LoginRequest(net_acc_manager, login, pass);
     connect(request, &LoginRequest::tokenReceived, this, &NetworkManage::tokenReceived);
     connect(request, &LoginRequest::tokenReceived, request, &LoginRequest::deleteLater);
+    connect(request, &LoginRequest::errorSignal, this, &NetworkManage::loginErrorReceived);
 }
 
 void NetworkManage::exitLogin()
@@ -43,7 +43,6 @@ void NetworkManage::setProjectName(const QString& id, const QJsonObject& obj)
 {
     SetProjectNameRequest(net_acc_manager, token, id, obj);
 }
-
 
 void NetworkManage::tokenReceived(const QString& a_token)
 {
